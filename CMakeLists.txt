@@ -156,15 +156,15 @@ mapnik_find_package(Freetype REQUIRED)
 
 # try to find harfbuzz with the native configuration and fallback to our "own" FindHarfBuzz
 mapnik_find_package(harfbuzz CONFIG QUIET)
-if(harfbuzz_FOUND)
-    message(STATUS "Found harfbuzz native cmake")
-    list(APPEND MAPNIK_OPTIONAL_LIBS harfbuzz::harfbuzz)
-else()
-    # we use our "own" FindHarfBuzz. See https://github.com/mapnik/mapnik/pull/4191#issuecomment-874728157 for more details
-    message(STATUS "Fallback to FindHarfBuzz")
-    mapnik_find_package(HarfBuzz ${HARFBUZZ_MIN_VERSION} REQUIRED COMPONENTS ICU)
-    list(APPEND MAPNIK_OPTIONAL_LIBS HarfBuzz::HarfBuzz HarfBuzz::ICU)
-endif()
+#if(harfbuzz_FOUND)
+#    message(STATUS "Found harfbuzz native cmake")
+#    list(APPEND MAPNIK_OPTIONAL_LIBS harfbuzz::harfbuzz)
+#else()
+#    # we use our "own" FindHarfBuzz. See https://github.com/mapnik/mapnik/pull/4191#issuecomment-874728157 for more details
+#    message(STATUS "Fallback to FindHarfBuzz")
+#    mapnik_find_package(HarfBuzz ${HARFBUZZ_MIN_VERSION} REQUIRED COMPONENTS ICU)
+#    list(APPEND MAPNIK_OPTIONAL_LIBS HarfBuzz::HarfBuzz HarfBuzz::ICU)
+#endif()
 
 if(USE_EXTERNAL_MAPBOX_GEOMETRY)
     # this is used to provide a way to specify include dirs with CACHE VARIABLES
