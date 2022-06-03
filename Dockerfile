@@ -30,6 +30,7 @@ WORKDIR /app
 COPY . .
 
 RUN cmake --preset linux-gcc-release -DBUILD_DEMO_VIEWER=OFF -DBUILD_TESTING=OFF -DBUILD_DEMO_CPP=OFF -DBUILD_BENCHMARK=OFF \
+	-DCMAKE_JOB_POOL_COMPILE:STRING=compile -DCMAKE_JOB_POOL_LINK:STRING=link '-DCMAKE_JOB_POOLS:STRING=compile=4;link=2' \
     && cmake --build --preset linux-gcc-release \
     && cmake --build --preset linux-gcc-release --target install \
     && cd / \
